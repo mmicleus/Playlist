@@ -25,6 +25,11 @@ public class PlaylistGUI extends javax.swing.JFrame {
     public PlaylistGUI() {
         initComponents();
         
+        this.songsCountTxt.setText("0 songs");
+        this.popSongsTxt.setText("0 songs");
+        this.rockSongsTxt.setText("0 songs");
+        
+        
         songs = new SLList();
         popSongs = new SLList();
         rockSongs = new SLList();
@@ -70,6 +75,9 @@ public class PlaylistGUI extends javax.swing.JFrame {
         searchBtn = new javax.swing.JButton();
         moveToPopBtn = new javax.swing.JButton();
         moveToRockBtn = new javax.swing.JButton();
+        songsCountTxt = new javax.swing.JLabel();
+        popSongsTxt = new javax.swing.JLabel();
+        rockSongsTxt = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
 
@@ -114,6 +122,11 @@ public class PlaylistGUI extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        popSongsList.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                popSongsListKeyPressed(evt);
+            }
+        });
         popSongsList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 popSongsListValueChanged(evt);
@@ -129,6 +142,11 @@ public class PlaylistGUI extends javax.swing.JFrame {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
+        });
+        rockSongsList.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                rockSongsListKeyPressed(evt);
+            }
         });
         rockSongsList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -177,6 +195,12 @@ public class PlaylistGUI extends javax.swing.JFrame {
             }
         });
 
+        songsCountTxt.setText("jLabel2");
+
+        popSongsTxt.setText("jLabel2");
+
+        rockSongsTxt.setText("jLabel2");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -209,24 +233,28 @@ public class PlaylistGUI extends javax.swing.JFrame {
                                 .addComponent(addSongBtn)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(songsCountTxt))
+                                .addGap(134, 134, 134)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(popSongsTxt))
+                                .addGap(76, 76, 76)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rockSongsTxt)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(deleteBtn)
                                 .addGap(27, 27, 27)
-                                .addComponent(moveToPopBtn)))
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(76, 76, 76)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(moveToRockBtn))))
+                                .addComponent(moveToPopBtn)
+                                .addGap(29, 29, 29)
+                                .addComponent(moveToRockBtn)))))
                 .addContainerGap(104, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -255,12 +283,18 @@ public class PlaylistGUI extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addGap(18, 18, 18)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(songsCountTxt)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(popSongsTxt)
+                        .addComponent(rockSongsTxt)))
+                .addGap(79, 79, 79)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(deleteBtn)
                     .addComponent(moveToPopBtn)
                     .addComponent(moveToRockBtn))
-                .addGap(61, 61, 61)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(searchTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -399,7 +433,9 @@ public class PlaylistGUI extends javax.swing.JFrame {
            this.songs.add(index-1,this.songToDelete);
            this.songs.remove(index);
            this.songs.add(index,aux);
+           
            mapSongsToLists();
+           this.songsList.setSelectedIndex(index-2);
        }
        else if(evt.getKeyChar() == 's'){
            int index = this.songs.getIndexBySongName(this.songToDelete);
@@ -410,8 +446,9 @@ public class PlaylistGUI extends javax.swing.JFrame {
            this.songs.add(index + 1,this.songToDelete);
            this.songs.remove(index);
            this.songs.add(index,aux);
-           //this.songsList.setSelectedIndex(index+1);
+           
            mapSongsToLists();
+           this.songsList.setSelectedIndex(index);
            
            
        }
@@ -419,11 +456,87 @@ public class PlaylistGUI extends javax.swing.JFrame {
        
     }//GEN-LAST:event_songsListKeyTyped
 
+    private void popSongsListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_popSongsListKeyPressed
+        // TODO add your handling code here:
+        
+        if(evt.getKeyChar() == 'w'){
+           
+           int index = this.popSongs.getIndexBySongName(this.songToDelete);
+           
+           if(index == 1) return;
+           String aux = this.popSongs.get(index - 1).getElement();
+           this.popSongs.remove(index - 1);
+           this.popSongs.add(index-1,this.songToDelete);
+           this.popSongs.remove(index);
+           this.popSongs.add(index,aux);
+           
+           mapSongsToLists();
+           this.popSongsList.setSelectedIndex(index-2);
+       }
+       else if(evt.getKeyChar() == 's'){
+           int index = this.popSongs.getIndexBySongName(this.songToDelete);
+           
+           if(index == this.popSongs.size()) return;
+           
+           String aux = this.popSongs.get(index + 1).getElement();
+           this.popSongs.remove(index + 1);
+           this.popSongs.add(index + 1,this.songToDelete);
+           this.popSongs.remove(index);
+           this.popSongs.add(index,aux);
+           
+           mapSongsToLists();
+           this.popSongsList.setSelectedIndex(index);
+           
+           
+       }
+    }//GEN-LAST:event_popSongsListKeyPressed
+
+    private void rockSongsListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rockSongsListKeyPressed
+        // TODO add your handling code here:
+        
+         if(evt.getKeyChar() == 'w'){
+           
+           int index = this.rockSongs.getIndexBySongName(this.songToDelete);
+           
+           if(index == 1) return;
+           String aux = this.rockSongs.get(index - 1).getElement();
+           this.rockSongs.remove(index - 1);
+           this.rockSongs.add(index-1,this.songToDelete);
+           this.rockSongs.remove(index);
+           this.rockSongs.add(index,aux);
+           
+           mapSongsToLists();
+           this.rockSongsList.setSelectedIndex(index-2);
+       }
+       else if(evt.getKeyChar() == 's'){
+           int index = this.rockSongs.getIndexBySongName(this.songToDelete);
+           
+           if(index == this.rockSongs.size()) return;
+           
+           String aux = this.rockSongs.get(index + 1).getElement();
+           this.rockSongs.remove(index + 1);
+           this.rockSongs.add(index + 1,this.songToDelete);
+           this.rockSongs.remove(index);
+           this.rockSongs.add(index,aux);
+           
+           mapSongsToLists();
+           this.rockSongsList.setSelectedIndex(index);
+           
+           
+       }
+        
+    }//GEN-LAST:event_rockSongsListKeyPressed
+
     private void mapSongsToLists(){
         
         DefaultListModel<String> songsModel = new DefaultListModel<>();
         DefaultListModel<String> rockModel = new DefaultListModel<>();
         DefaultListModel<String> popModel = new DefaultListModel<>();
+        
+        this.songsCountTxt.setText(songs.size()+ " songs");
+        this.popSongsTxt.setText(popSongs.size()+ " songs");
+        this.rockSongsTxt.setText(rockSongs.size()+ " songs");
+        
         
         for(int i = 1;i <= songs.size();i++){
             
@@ -501,11 +614,14 @@ public class PlaylistGUI extends javax.swing.JFrame {
     private javax.swing.JButton moveToPopBtn;
     private javax.swing.JButton moveToRockBtn;
     private javax.swing.JList<String> popSongsList;
+    private javax.swing.JLabel popSongsTxt;
     private javax.swing.JList<String> resultsList;
     private javax.swing.JList<String> rockSongsList;
+    private javax.swing.JLabel rockSongsTxt;
     private javax.swing.JButton searchBtn;
     private javax.swing.JTextField searchTxt;
     private javax.swing.JTextField songNameTxt;
+    private javax.swing.JLabel songsCountTxt;
     private javax.swing.JList<String> songsList;
     // End of variables declaration//GEN-END:variables
 }

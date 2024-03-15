@@ -3,6 +3,7 @@ com\mycompany\playlistapp\PlaylistGUI.class
 com\mycompany\playlistapp\PlaylistGUI$10.class
 com\mycompany\playlistapp\PlaylistGUI$11.class
 com\mycompany\playlistapp\PlaylistGUI$6.class
+com\mycompany\playlistapp\PlaylistGUI$16.class
 com\mycompany\playlistapp\PlaylistGUI$15.class
 com\mycompany\playlistapp\PlaylistGUI$3.class
 com\mycompany\playlistapp\PlaylistGUI$7.class
@@ -18,3 +19,4 @@ com\mycompany\playlistapp\PlaylistGUI$4.class
 com\mycompany\playlistapp\PlaylistGUI$12.class
 com\mycompany\playlistapp\PlaylistGUI$9.class
 com\mycompany\playlistapp\PlaylistApp.class
+com\mycompany\playlistapp\PlaylistGUI$17.class
