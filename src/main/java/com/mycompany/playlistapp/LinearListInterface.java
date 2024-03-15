@@ -6,21 +6,16 @@ package com.mycompany.playlistapp;
 
 /**
  *
- * @author Hamilton1
+ * @author cmuntean
  */
 public interface LinearListInterface {
+        public boolean isEmpty();
+	public int size();
+	public Node get(int index);
+	public void remove(int index);
+	public void add(int index, String theElement);
+        public void add(String element);
+	public void printList();
 
-    public boolean isEmpty();
-
-    public int size();
-
-    public DlNode get(int iIndex);
-
-    public void remove(int iIndex);
-
-    public void add(int iIndex, String element);
-
-    public String printList();
-
-    public String printListBwd();
+    
 }
