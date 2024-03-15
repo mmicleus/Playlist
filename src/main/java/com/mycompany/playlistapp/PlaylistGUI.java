@@ -78,6 +78,9 @@ public class PlaylistGUI extends javax.swing.JFrame {
         songsCountTxt = new javax.swing.JLabel();
         popSongsTxt = new javax.swing.JLabel();
         rockSongsTxt = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
 
@@ -201,6 +204,12 @@ public class PlaylistGUI extends javax.swing.JFrame {
 
         rockSongsTxt.setText("jLabel2");
 
+        jLabel2.setText("w - move song up");
+
+        jLabel10.setText("s - move song down");
+
+        jLabel11.setText("Instructions:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -255,7 +264,12 @@ public class PlaylistGUI extends javax.swing.JFrame {
                                 .addComponent(moveToPopBtn)
                                 .addGap(29, 29, 29)
                                 .addComponent(moveToRockBtn)))))
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,8 +278,17 @@ public class PlaylistGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel6)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel10))))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -289,12 +312,12 @@ public class PlaylistGUI extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(popSongsTxt)
                         .addComponent(rockSongsTxt)))
-                .addGap(79, 79, 79)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(deleteBtn)
                     .addComponent(moveToPopBtn)
                     .addComponent(moveToRockBtn))
-                .addGap(22, 22, 22)
+                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(searchTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -338,12 +361,22 @@ public class PlaylistGUI extends javax.swing.JFrame {
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
         // TODO add your handling code here:
         
-        ArrayList<String> results = this.songs.getSongsByName(this.searchTxt.getText());
+        ArrayList<String> results1 = this.songs.getSongsByName(this.searchTxt.getText());
+        ArrayList<String> results2 = this.popSongs.getSongsByName(this.searchTxt.getText());
+        ArrayList<String> results3 = this.rockSongs.getSongsByName(this.searchTxt.getText());
         
         DefaultListModel<String> model = new DefaultListModel<>();
         
-        for(int i = 0;i < results.size();i++){
-            model.addElement(results.get(i));
+        for(int i = 0;i < results1.size();i++){
+            model.addElement(results1.get(i));
+        }
+        
+        for(int i = 0;i < results2.size();i++){
+            model.addElement(results2.get(i));
+        }
+        
+        for(int i = 0;i < results3.size();i++){
+            model.addElement(results3.get(i));
         }
         
         
@@ -599,6 +632,9 @@ public class PlaylistGUI extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
