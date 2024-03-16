@@ -15,7 +15,5 @@ public interface LinearListInterface {
 	public void remove(int index);
 	public void add(int index, String theElement);
         public void add(String element);
-	public void printList();
-
-    
+	public void printList();   
 }
